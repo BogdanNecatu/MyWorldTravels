@@ -60,7 +60,7 @@ function reducer(state, action) {
   }
 }
 
-function CitiesProvider({ children }) {
+export function CitiesProvider({ children }) {
   const [{ cities, isLoading, currentCity, error }, dispatch] = useReducer(
     reducer,
     initialState
@@ -160,11 +160,9 @@ function CitiesProvider({ children }) {
   );
 }
 
-function useCities() {
+export function useCities() {
   const context = useContext(CitiesContext);
   if (context === undefined)
     throw new Error("CitiesContext was used outside the CitiesProvider");
   return context;
 }
-
-export { CitiesProvider, useCities };
